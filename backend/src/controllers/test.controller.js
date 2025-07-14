@@ -118,7 +118,7 @@ const getTestById=asyncHandler(async(req,res)=>{
     .status(200)
     .json(new ApiResponse(200,test,"Test Successfully registered"))
 })
-const addQuestionToTest=asyncHandler(async(req,res)=>{
+/*const addQuestionToTest=asyncHandler(async(req,res)=>{
     if(!req)
     {
         throw new ApiError(409,"Req is undefined")
@@ -158,6 +158,67 @@ const addQuestionToTest=asyncHandler(async(req,res)=>{
     return res
     .status(200)
     .json(new ApiResponse(200,question,"Question Successfully added to test"))
+})
+*/
+const addQuestionToTest=asyncHandler(async(req,res)=>{
+    const testId=req.params.id
+    if(!testId)
+    {
+        throw new ApiError(409,"Test Id is required")
+    }
+    const test=await Test.findById(testId)
+    if(!test)
+    {
+        throw new ApiError(404,"Test Not found")
+    }
+    const {statement,explanation,type}=req.body
+    if(!statement||!explanation||!type)
+    {
+        throw new ApiError(409,"Statements,Explanation,Types are required")
+    }
+    if(type==="MCQ")
+    {
+        const {options,correctAnswerIndex}=req.body
+        if(!Array.isArray(options)||options.length!==4)
+        {
+            throw new ApiError(401,"Options must be array of length 4")
+        }
+        if(correctAnswerIndex===undefined)
+        {
+            throw new ApiError(401,"CorrectAnswerIndex is required")
+        }
+        const question=await Question.create({
+            statement,
+            explanation,
+            options,
+            type,
+            correctAnswerIndex
+        })
+        test.questions.push(question._id)
+        await test.save()
+        return res
+        .status(200)
+        .json(new ApiResponse(200,question,"Question Successfully Created"))
+    }
+    else
+    {
+        const {correctAnswer}=req.body
+        if(correctAnswer===undefined)
+        {
+            throw new ApiError(401,"Correct Answer is required")
+        }
+        const question=await Question.create({
+            statement,
+            explanation,
+            type,
+            correctAnswer,
+        })
+        test.questions.push(question._id)
+        await test.save()
+        return res
+        .status(200)
+        .json(new ApiResponse(200,question,"Question Successfully Created"))
+    }
 })
 const unPublishTest=asyncHandler(async(req,res)=>{
     const testId=req.params.id

@@ -12,4 +12,6 @@ import userRouter from './routes/user.route.js'
 app.use("/api/v1/users",userRouter)
 import testRouter from './routes/test.route.js'
 app.use("/api/v1/tests",testRouter)
+import submissionRouter from './routes/submission.route.js'
+app.use("/api/v1/submissions",submissionRouter)
 export {app}
