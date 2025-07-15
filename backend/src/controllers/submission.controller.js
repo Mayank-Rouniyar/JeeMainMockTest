@@ -54,6 +54,44 @@ for(let i=0;i<=answers.length-1;i++)
    .status(200)
    .json(new ApiResponse(200,submission,"Test Successfully submitted"))
 })
+const getUserSubmissions=asyncHandler(async(req,res)=>{
+    const userId=req.user._id
+    if(!userId)
+    {
+        throw new ApiError(409,"userID is required")
+    }
+    const submission=await Submission.find({user:userId}).populate("test","topics title subject year duration").sort({ submittedAt: -1 })
+    if(submission.length===0)
+    {
+        throw new ApiError(404,"No Submitted Test found")
+    }
+    return res
+    .status(200)
+    .json(new ApiResponse(200,submission,"All Submiited test fetched successfully"))
+})
+const getSubmissionById=asyncHandler(async(req,res)=>{
+    const {submissionId}=req.params
+    if(!submissionId)
+    {
+        throw new ApiError(409,"Submission ID is required")
+    }
+    const submission=await Submission.findById(submissionId)
+    .populate({
+        path:"test",
+        populate:({
+            path:"questions"
+        })
+    })
+    if(!submission)
+    {
+        throw new ApiError(404,"Submission Not Found")
+    }
+    return res
+    .status(200)
+    .json(new ApiResponse(200,submission,"Submission Successfully fetched"))
+})
 export{
-    submitTest
+    submitTest,
+    getUserSubmissions,
+    getSubmissionById
 }
