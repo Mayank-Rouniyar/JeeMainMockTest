@@ -6,7 +6,6 @@ const testSchema=new mongoose.Schema({
     },
     subject:{
         type:String,
-        enum:["Maths","Physics","Chemistry"],
         required:true,
     },
     topics:{

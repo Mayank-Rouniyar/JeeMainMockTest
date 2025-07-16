@@ -43,7 +43,7 @@ const updateTest=asyncHandler(async(req,res)=>{
     const test=await Test.findById(testId)
     if(!test)
     {
-        throw new ApiError("404","Test Not Found")
+        throw new ApiError(404,"Test Not Found")
     }
     const {title,subject,topics,duration,year}=req.body
     if(title!==undefined)
@@ -116,7 +116,7 @@ const getTestById=asyncHandler(async(req,res)=>{
     }
     return res
     .status(200)
-    .json(new ApiResponse(200,test,"Test Successfully registered"))
+    .json(new ApiResponse(200,test,"Test by the given id successfully found"))
 })
 /*const addQuestionToTest=asyncHandler(async(req,res)=>{
     if(!req)
@@ -172,7 +172,7 @@ const addQuestionToTest=asyncHandler(async(req,res)=>{
         throw new ApiError(404,"Test Not found")
     }
     const {statement,explanation,type}=req.body
-    if(!statement||!explanation||!type)
+    if(!statement||!type)
     {
         throw new ApiError(409,"Statements,Explanation,Types are required")
     }

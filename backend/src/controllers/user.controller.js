@@ -23,6 +23,7 @@ const registerUser=asyncHandler(async(req,res)=>{
        throw new ApiError(400,"Body is required")
     }
     const{name,email,username,password}=req.body
+    const {role}=req.body
     if(!name?.trim()||!email?.trim()||!username?.trim()||!password?.trim())
     {
        throw new ApiError(401,"All fields are required to register")
@@ -39,6 +40,7 @@ const registerUser=asyncHandler(async(req,res)=>{
      email:email,
      username:username,
      password:password,
+     role:role||"USER"
     })
     const createdUser=await User.findById(user._id).select(
       "-password -refreshToken"
