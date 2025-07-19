@@ -9,12 +9,13 @@ useEffect(()=>{
     const fetchTest=async()=>{
     try {
         const token=localStorage.getItem("accessToken")
+        console.log("The tokens is",token)
         const response=await axios.get("http://localhost:5000/api/v1/tests/published",{
             headers:{
                 Authorization:`Bearer ${token}`
             }
         })
-        setTests(response.data)
+        setTests(response.data.data)
         console.log("Tests fetched successfullly",response.data)
     } catch (error) {
         console.log("Tests fetching failed",error)
@@ -24,7 +25,7 @@ useEffect(()=>{
     fetchTest()
 },[])
 const handleAttempt=(testId)=>{
-    navigate(`/test/${testId}`)
+    navigate(`/attempt/${testId}`)
 }
 return(
     <div className="min-h-screen bg-blue-50 p-6">

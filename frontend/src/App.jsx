@@ -8,6 +8,7 @@ import Register from './pages/Register.jsx'
 import { useEffect } from 'react'
 import Login from './pages/Login.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import Attempt from './pages/Attempt.jsx'
 function App() {
   return (
     <Routes>
@@ -15,6 +16,7 @@ function App() {
       <Route path="/register" element={<Register/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
+      <Route path="/attempt/:testId" element={<Attempt/>}/>
     </Routes>
   )
 }

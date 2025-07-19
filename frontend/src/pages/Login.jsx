@@ -23,10 +23,13 @@ e.preventDefault()
 setError("")
 try {
     const response =await axios.post("http://localhost:5000/api/v1/users/login",formData)
-    localStorage.setItem("accessToken", response.data.accessToken)
-    localStorage.setItem("user", JSON.stringify(response.data.user))
+    console.log("The reaponse is",response)
+    localStorage.setItem("accessToken", response.data.data.accessToken)
+    localStorage.setItem("user", JSON.stringify(response.data.data.user))
     console.log("Login Successfull",response.data)
-    navigate("/dashboard")
+    setTimeout(() => {
+  navigate("/dashboard")
+   }, 0)
 } catch (error) {
     console.log("Error occured",error)
     setError(error.response?.data.message||"Registration Failed")
