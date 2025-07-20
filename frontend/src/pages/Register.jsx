@@ -1,38 +1,43 @@
-import {useState} from 'react';
-import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
-    const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        name:"",
-        email:"",
-        username:"",
-        password:"",
-    });
-    const [error, setError] = useState("");
-    const handleChange=(e)=>{
-        setFormData(prev=>({
-            ...prev,
-            [e.target.name]:e.target.value,
-        }));
-    }
-    const handleSubmit=async (e)=>{
-        e.preventDefault()
-        setError("")
-    
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    username: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
     try {
-        const response=await axios.post("http://localhost:5000/api/v1/users/register",formData)
-        console.log("Registration Successfull",response.data)
-        navigate("/login")
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/users/register",
+        formData
+      );
+      console.log("Registration Successfull", response.data);
+      navigate("/login");
     } catch (error) {
-        console.log("Error occured",error)
-        setError(error.response?.data.message||"Registration Failed");
+      console.log("Error occured", error);
+      setError(error.response?.data.message || "Registration Failed");
     }
-    };
-    return (
+  };
+  return (
     <div className="flex items-center justify-center min-h-screen bg-blue-50">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
-        <h2 className="text-3xl font-bold text-center text-blue-600">Create an Account</h2>
+        <h2 className="text-3xl font-bold text-center text-blue-600">
+          Create an Account
+        </h2>
 
         {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
