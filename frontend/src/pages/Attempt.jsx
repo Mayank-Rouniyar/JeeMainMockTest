@@ -1,9 +1,12 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 const Attempt = () => {
+  const handleSubmitRef = useRef();
   const navigate = useNavigate();
   const { testId } = useParams();
+  const [timeLeft, setTimeLeft] = useState(null);
+  const timerRef = useRef(null);
   const [tests, setTests] = useState(null);
   const [me, setMe] = useState({});
   const [currentQ, setCurrentQ] = useState(0);
@@ -34,6 +37,7 @@ const Attempt = () => {
     };
     fetchUser();
   }, []);
+  
   useEffect(() => {
     const fetchTest = async () => {
       try {
@@ -46,15 +50,35 @@ const Attempt = () => {
             },
           }
         );
+
         setTests(response.data.data);
         console.log("The test response is", response);
+        const durationInSeconds = response.data.data.duration * 60;
+        setTimeLeft(durationInSeconds);
+        if (timerRef.current) clearInterval(timerRef.current);
+        timerRef.current = setInterval(() => {
+          setTimeLeft((prev) => {
+            if (prev <= 1) {
+              clearInterval(timerRef.current);
+              handleSubmitRef.current?.();
+              return 0;
+            }
+            return prev - 1;
+          });
+        }, 1000);
       } catch (error) {
         setError(error);
-        console.log("An error ocuured while fetching test", error);
+        console.log("An error occurred while fetching test", error);
       }
     };
+
     fetchTest();
+
+    return () => {
+      clearInterval(timerRef.current);
+    };
   }, [testId]);
+
   const [questionStatus, setQuestionStatus] = useState({});
   const handleOptionSelect = (optionIndex) => {
     setSelectedOptions((prev) => ({
@@ -89,7 +113,7 @@ const Attempt = () => {
   const getButtonColor = (index) => {
     if (index === currentQ) return "bg-white text-black border border-black";
     if (questionStatus[index] === "review") return "bg-yellow-500";
-    if (selectedOptions[index]) return "bg-blue-500";
+    if (selectedOptions.hasOwnProperty[index]) return "bg-blue-500";
     return "bg-gray-500";
   };
   const totalQuestions = tests?.questions?.length || 0;
@@ -136,6 +160,15 @@ const Attempt = () => {
       setError(error);
     }
   };
+  useEffect(() => {
+    handleSubmitRef.current = handleSubmit;
+  }, [handleSubmit]);
+
+  const formatTime = (seconds) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  };
   return (
     <div>
       <div className="h-[10vh] w-full flex items-center justify-between px-4 border-b">
@@ -158,7 +191,9 @@ const Attempt = () => {
           </p>
           <p>
             Remaining Time:{" "}
-            <span className="font-bold text-blue-600">02:59:39</span>
+            <span className="font-bold text-blue-600">
+              Time Left: {formatTime(timeLeft ?? 0)}
+            </span>
           </p>
         </div>
       </div>
@@ -190,7 +225,9 @@ const Attempt = () => {
                     type="number"
                     className="border p-1 w-40"
                     value={selectedOptions[currentQ] || ""}
-                    onChange={(e) => handleOptionSelect(e.target.value)}
+                    onChange={(e) =>
+                      handleOptionSelect(parseInt(e.target.value))
+                    }
                   />
                   <span className="text-gray-600 text-sm">
                     Enter integer answer
