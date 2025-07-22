@@ -10,6 +10,7 @@ import Login from "./pages/Login.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Attempt from "./pages/Attempt.jsx";
 import Result from "./pages/Result.jsx";
+import AdminLogin from "./pages/AdminLogin.jsx";
 function App() {
   return (
     <Routes>
@@ -19,6 +20,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/attempt/:testId" element={<Attempt />} />
       <Route path="/test/:testId/result" element={<Result />} />
+      <Route path="/adminLogin" element={<AdminLogin/>}/>
     </Routes>
   );
 }
