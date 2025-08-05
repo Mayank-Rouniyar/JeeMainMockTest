@@ -14,7 +14,7 @@ export const authorizeRole=(...roles)=>{
    }
    if(!b)
    {
-    throw new ApiError(401,"You are not authorized to go ahead")
+    throw new ApiError(402,"You are not authorized to go ahead")
    }
    next()
 };

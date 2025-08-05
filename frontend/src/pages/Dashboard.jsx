@@ -10,6 +10,9 @@ const Dashboard = () => {
       try {
         const token = localStorage.getItem("accessToken");
         console.log("The tokens is", token);
+        console.log("Payload")
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        console.log("Payload is",payload);
         const response = await axios.get(
           "http://localhost:5000/api/v1/tests/published",
           {

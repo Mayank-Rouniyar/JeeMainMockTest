@@ -175,11 +175,22 @@ const getCurrentUser=asyncHandler(async(req,res)=>{
    .status(200)
    .json(new ApiResponse(200,req.user,"Logged in user fetched successfully"))
 })
+const getAllUser=asyncHandler(async(req,res)=>{
+   const user=await User.find().select("username role")
+   if(user.length===0)
+   {
+    throw new ApiError(409,"Some Error Ocuured while fetching all Users")
+   }
+   return res
+   .status(200)
+   .json(new ApiResponse(200,user,"All User Successfully fetched"))
+})
 export{
     generateAccessAndRefreshTokens,
     registerUser,
     loginUser,
     logoutUser,
     refreshAccessToken,
-    getCurrentUser
+    getCurrentUser,
+    getAllUser
 }

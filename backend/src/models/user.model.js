@@ -52,7 +52,7 @@ userSchema.methods.generateAccessTokens=function(){
         email: this.email,
         username: this.username,
         fullName: this.fullName,
-        //Here this.username,fullname etc is comming from database
+        role:this.role
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
@@ -63,7 +63,6 @@ userSchema.methods.generateAccessTokens=function(){
 userSchema.methods.generateRefreshTokens=function(){
     return jwt.sign({
         _id: this._id,
-        //Here this._id comes from database
     },
     process.env.REFRESH_TOKEN_SECRET,
     {
