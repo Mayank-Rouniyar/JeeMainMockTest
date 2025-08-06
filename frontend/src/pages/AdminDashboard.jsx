@@ -10,7 +10,7 @@ const AdminDashboard = () => {
             const token=localStorage.getItem("accessToken");
             console.log("Token is",token)
             try {
-                const res=await axios.get("http://localhost:5000/api/v1/users/allUser",{
+                const res=await axios.get("https://test-backend-e908.onrender.com/api/v1/users/allUser",{
                     headers:{
                         Authorization:`Bearer ${token}`
                     }
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
         const fetchAllTests=async ()=>{
             const token=localStorage.getItem("accessToken");
             try {
-                const res=await axios.get("http://localhost:5000/api/v1/tests",{
+                const res=await axios.get("https://test-backend-e908.onrender.com/api/v1/tests",{
                     headers:{
                         Authorization:`Bearer ${token}`
                     }

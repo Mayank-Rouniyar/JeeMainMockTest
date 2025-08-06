@@ -22,7 +22,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/users/register",
+        "https://test-backend-e908.onrender.com/api/v1/users/register",
         formData
       );
       console.log("Registration Successfull", response.data);

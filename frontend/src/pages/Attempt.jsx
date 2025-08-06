@@ -23,7 +23,7 @@ const Attempt = () => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("accessToken");
-        const user = await axios.get("http://localhost:5000/api/v1/users/me", {
+        const user = await axios.get("https://test-backend-e908.onrender.com/api/v1/users/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -43,7 +43,7 @@ const Attempt = () => {
       try {
         const token = localStorage.getItem("accessToken");
         const response = await axios.get(
-          `http://localhost:5000/api/v1/tests/${testId}`,
+          `https://test-backend-e908.onrender.com/api/v1/tests/${testId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -141,7 +141,7 @@ const Attempt = () => {
     const token = localStorage.getItem("accessToken");
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/v1/submissions/${testId}`,
+        `https://test-backend-e908.onrender.com/api/v1/submissions/${testId}`,
         { answers: answerArray },
         {
           headers: {

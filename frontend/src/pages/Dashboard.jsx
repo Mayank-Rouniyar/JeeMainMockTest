@@ -14,7 +14,7 @@ const Dashboard = () => {
         const payload = JSON.parse(atob(token.split('.')[1]));
         console.log("Payload is",payload);
         const response = await axios.get(
-          "http://localhost:5000/api/v1/tests/published",
+          "https://test-backend-e908.onrender.com/api/v1/tests/published",
           {
             headers: {
               Authorization: `Bearer ${token}`,
