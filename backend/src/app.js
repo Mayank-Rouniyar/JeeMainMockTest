@@ -3,7 +3,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 const app=express()
 const allowedOrigin=[
-    "http:localhost:5173",
+    "http://localhost:5173",
     "https://jee-main-mock-test.vercel.app"
 ]
 app.use(cors({
