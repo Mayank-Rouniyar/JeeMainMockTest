@@ -13,6 +13,7 @@ import Result from "./pages/Result.jsx";
 import AdminLogin from "./pages/AdminLogin.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import CreateTest from "./pages/CreateTest.jsx";
+import UpdateTest from "./pages/UpdateTest.jsx";
 function App() {
   return (
     <Routes>
@@ -25,6 +26,7 @@ function App() {
       <Route path="/adminLogin" element={<AdminLogin/>}/>
       <Route path="/adminDashboard" element={<AdminDashboard/>}/>
       <Route path="/create" element={<CreateTest/>}/>
+      <Route path="/update" element={<UpdateTest/>}/>
     </Routes>
   );
 }
