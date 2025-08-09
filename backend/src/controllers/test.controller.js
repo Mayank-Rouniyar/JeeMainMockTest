@@ -25,7 +25,7 @@ const createTest=asyncHandler(async(req,res)=>{
    .json(new ApiResponse(200,test,"Test successfully created"))
 })
 const getAllTest=asyncHandler(async(req,res)=>{
-    const test=await Test.find().select("title subject duration")
+    const test=await Test.find().select("title subject duration isPublished")
     if(test.length===0)
     {
         throw new ApiError(409,"Something error occured happened while fetching all test")

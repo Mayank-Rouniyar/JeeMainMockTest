@@ -62,6 +62,15 @@ const AdminDashboard = () => {
   const handleUpdate=()=>{
     navigate("/update")
   }
+  const handleDelete=()=>{
+    navigate("/delete")
+  }
+  const handlePublish=()=>{
+    navigate("/publish")
+  }
+  const handleUnPublish=()=>{
+    navigate("/unPublish")
+  }
   return (
     <div className="absolute inset-0 flex overflow-hidden">
       {/* Left Sidebar */}
@@ -76,13 +85,13 @@ const AdminDashboard = () => {
           <button className="pt-2 pb-2 text-white text-xl" onClick={handleUpdate}>Update Test</button>
         </div>
         <div className="border-t border-b border-gray-400">
-          <button className="pt-2 pb-2 text-white text-xl">Publish Test</button>
+          <button className="pt-2 pb-2 text-white text-xl" onClick={handlePublish}>Publish Test</button>
         </div>
         <div className="border-t border-b border-gray-400">
-          <button className="pt-2 pb-2 text-white text-xl">Delete Test</button>
+          <button className="pt-2 pb-2 text-white text-xl" onClick={handleDelete}>Delete Test</button>
         </div>
         <div className="border-t border-b border-gray-400">
-          <button className="pt-2 pb-2 text-white text-xl">UnPublish Test</button>
+          <button className="pt-2 pb-2 text-white text-xl" onClick={handleUnPublish}>UnPublish Test</button>
         </div>
       </div>
 

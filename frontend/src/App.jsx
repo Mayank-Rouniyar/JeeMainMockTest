@@ -14,6 +14,9 @@ import AdminLogin from "./pages/AdminLogin.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import CreateTest from "./pages/CreateTest.jsx";
 import UpdateTest from "./pages/UpdateTest.jsx";
+import Delete from "./pages/Delete.jsx";
+import PublishTest from "./pages/PublishTest.jsx";
+import UnPublishTest from "./pages/UnPublishTest.jsx";
 function App() {
   return (
     <Routes>
@@ -27,6 +30,9 @@ function App() {
       <Route path="/adminDashboard" element={<AdminDashboard/>}/>
       <Route path="/create" element={<CreateTest/>}/>
       <Route path="/update" element={<UpdateTest/>}/>
+      <Route path="/delete" element={<Delete/>}/>
+      <Route path="/publish" element={<PublishTest/>}/>
+      <Route path="/unPublish" element={<UnPublishTest/>}/>
     </Routes>
   );
 }
