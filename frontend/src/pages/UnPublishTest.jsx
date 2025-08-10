@@ -41,8 +41,8 @@ export default function UnPublishTest() {
           },
         }
       );
-      await fetchAllTests(); // refresh list after publish
-      setSelectedTestId(""); // reset dropdown
+      await fetchAllTests();
+      setSelectedTestId(""); 
     } catch (error) {
       console.log("Error is", error);
     }
@@ -50,7 +50,7 @@ export default function UnPublishTest() {
 
   return (
     <div className="max-w-2xl mx-auto p-4 bg-white rounded-2xl shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Publish Test</h2>
+      <h2 className="text-2xl font-semibold mb-4">UnPublish Test</h2>
 
       <div className="space-y-3">
         <label className="block text-sm font-medium">

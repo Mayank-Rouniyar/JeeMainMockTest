@@ -35,13 +35,13 @@ const Login = () => {
       }, 0);
     } catch (error) {
       console.log("Error occured", error);
-      setError(error.response?.data.message || "Registration Failed");
+      setError(error.response?.data.message || "Login Failed Check your username and password");
     }
   };
-  const handleAdminLogin=async(e)=>{
-  e.preventDefault();
-    navigate("/adminLogin")
-  }
+  const handleAdminLogin = async (e) => {
+    e.preventDefault();
+    navigate("/adminLogin");
+  };
   return (
     <div className="flex items-center justify-center min-h-screen bg-blue-50">
       <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
@@ -86,7 +86,12 @@ const Login = () => {
             Login
           </button>
         </form>
-        <button type="submit" className="w-full mt-2 bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition" onClick={handleAdminLogin}>Go to Admin Login</button>
+        <p
+          onClick={handleAdminLogin}
+          className="mt-4 text-center text-blue-600 hover:underline cursor-pointer"
+        >
+          Go to Admin Login
+        </p>
       </div>
     </div>
   );
