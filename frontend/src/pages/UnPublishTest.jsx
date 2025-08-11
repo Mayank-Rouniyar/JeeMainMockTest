@@ -43,42 +43,41 @@ export default function UnPublishTest() {
       );
       await fetchAllTests();
       setSelectedTestId(""); 
+      alert("Test Successfully UnPublished")
     } catch (error) {
       console.log("Error is", error);
     }
   };
-
   return (
-    <div className="max-w-2xl mx-auto p-4 bg-white rounded-2xl shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">UnPublish Test</h2>
+  <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] p-6 overflow-auto">
+    <div className="w-full max-w-2xl bg-white/10 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20 space-y-6 text-white">
+      <h2 className="text-3xl font-extrabold text-indigo-300">UnPublish Test</h2>
 
-      <div className="space-y-3">
-        <label className="block text-sm font-medium">
-          Choose a test to UnPublish
-        </label>
+      <div className="space-y-4">
+        <label className="block text-sm font-semibold">Choose a test to UnPublish</label>
         <select
           value={selectedTestId}
           onChange={(e) => setSelectedTestId(e.target.value)}
-          className="w-full border rounded-lg px-3 py-2"
+          className="w-full rounded-lg px-4 py-3 bg-white/10 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-green-500"
         >
-          <option value="">Select Test</option>
+          <option value="" className="text-black">Select Test</option>
           {test
             .filter((t) => t.isPublished === true || t.isPublished === "true")
             .map((t) => (
-              <option key={t._id} value={t._id}>
+              <option key={t._id} value={t._id} className="text-black">
                 {t.title}
               </option>
             ))}
         </select>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <button
             onClick={handleUnPublish}
             disabled={!selectedTestId}
-            className={`px-4 py-2 rounded-lg shadow-sm text-white ${
+            className={`px-5 py-3 rounded-xl font-semibold shadow-lg transition ${
               selectedTestId
-                ? "bg-green-600 hover:bg-green-700"
-                : "bg-gray-300 cursor-not-allowed"
+                ? "bg-green-600 hover:bg-green-700 text-white"
+                : "bg-gray-400 cursor-not-allowed text-gray-700"
             }`}
           >
             UnPublish Selected Test
@@ -86,6 +85,7 @@ export default function UnPublishTest() {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 }
 

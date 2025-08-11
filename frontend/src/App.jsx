@@ -17,8 +17,9 @@ import UpdateTest from "./pages/UpdateTest.jsx";
 import Delete from "./pages/Delete.jsx";
 import PublishTest from "./pages/PublishTest.jsx";
 import UnPublishTest from "./pages/UnPublishTest.jsx";
-import Fielding from "./pages/Fielding.jsx";
 import RemoveQuestion from "./pages/RemoveQuestion.jsx";
+import SubmissionHistory from "./pages/SubmissionHistory.jsx";
+import AddTest from "./pages/Fielding.jsx";
 function App() {
   return (
     <Routes>
@@ -35,8 +36,9 @@ function App() {
       <Route path="/delete" element={<Delete/>}/>
       <Route path="/publish" element={<PublishTest/>}/>
       <Route path="/unPublish" element={<UnPublishTest/>}/>
-      <Route path="/fielding" element={<Fielding/>}/>
+      <Route path="/addQuestion" element={<AddTest/>}/>
       <Route path="/removal" element={<RemoveQuestion/>}/>
+      <Route path="/submissionHistory" element={<SubmissionHistory/>}/>
     </Routes>
   );
 }

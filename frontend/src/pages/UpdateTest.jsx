@@ -77,98 +77,81 @@ const UpdateTest = () => {
           },
         }
       );
-      alert("Test updated successfully! ✅");
+      alert("Test updated successfully!");
       console.log(res.data);
       navigate("/adminDashboard")
     } catch (error) {
       console.error("Failed to update test", error);
-      alert("Update failed ❌");
+      alert("Update failed");
     }
   };
-
   return (
-    <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow-md">
-      <h1 className="text-3xl font-bold mb-6 text-blue-700">Update Test</h1>
+  <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] text-white p-4 overflow-auto">
+    <div className="w-full max-w-xl max-h-[90vh] p-6 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl space-y-6 overflow-y-auto">
+      <h1 className="text-4xl font-extrabold text-indigo-300 text-center">
+        Update Test
+      </h1>
 
-      <label className="block mb-4">
-        Select Test:
+      <label className="block">
+        <span className="text-sm font-medium mb-1 block">Select Test:</span>
         <select
           value={selectedTestId}
           onChange={(e) => setSelectedTestId(e.target.value)}
-          className="w-full mt-1 p-2 border rounded"
+          className="w-full mt-1 p-3 rounded-md bg-white/5 border border-white/20 
+                     text-white placeholder-gray-400 focus:outline-none focus:ring-2 
+                     focus:ring-indigo-400"
         >
-          <option value="">-- Select a test --</option>
+          <option value="" className="text-black">-- Select a test --</option>
           {tests.map((test) => (
-            <option key={test._id} value={test._id}>
+            <option key={test._id} value={test._id} className="text-black">
               {test.title}
             </option>
           ))}
         </select>
       </label>
 
-      <label className="block mb-4">
-        Title:
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          className="w-full mt-1 p-2 border rounded"
-        />
-      </label>
+      {["title", "year", "subject", "duration"].map((field) => (
+        <label key={field} className="block">
+          <span className="text-sm font-medium mb-1 block capitalize">
+            {field === "duration" ? "Duration (minutes)" : field}
+          </span>
+          <input
+            type={field === "year" || field === "duration" ? "number" : "text"}
+            name={field}
+            value={formData[field]}
+            onChange={handleChange}
+            className="w-full mt-1 p-3 rounded-md bg-white/5 border border-white/20 
+                       text-white placeholder-gray-400 focus:outline-none focus:ring-2 
+                       focus:ring-indigo-400"
+            placeholder={`Enter ${field}`}
+          />
+        </label>
+      ))}
 
-      <label className="block mb-4">
-        Year:
-        <input
-          type="number"
-          name="year"
-          value={formData.year}
-          onChange={handleChange}
-          className="w-full mt-1 p-2 border rounded"
-        />
-      </label>
-
-      <label className="block mb-4">
-        Subject:
-        <input
-          type="text"
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          className="w-full mt-1 p-2 border rounded"
-        />
-      </label>
-
-      <label className="block mb-4">
-        Duration (in minutes):
-        <input
-          type="number"
-          name="duration"
-          value={formData.duration}
-          onChange={handleChange}
-          className="w-full mt-1 p-2 border rounded"
-        />
-      </label>
-
-      <label className="block mb-4">
-        Topics (comma-separated):
+      <label className="block">
+        <span className="text-sm font-medium mb-1 block">Topics (comma-separated):</span>
         <input
           type="text"
           name="topics"
           value={topicsInput}
           onChange={handleChange}
-          className="w-full mt-1 p-2 border rounded"
+          className="w-full mt-1 p-3 rounded-md bg-white/5 border border-white/20 
+                     text-white placeholder-gray-400 focus:outline-none focus:ring-2 
+                     focus:ring-indigo-400"
+          placeholder="Algebra, Calculus, Geometry"
         />
       </label>
 
       <button
         onClick={handleUpdate}
-        className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+        className="w-full py-3 rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+                   text-white font-semibold shadow-lg hover:scale-[1.02] transition-transform"
       >
         Update Test
       </button>
     </div>
-  );
+  </div>
+);
 };
 
 export default UpdateTest;

@@ -53,91 +53,108 @@ for (let i = 0; i < formData.topics.length; i++) {
                withCredentials:true,
            }
          )
-     navigate("/adminDashboard")
+        alert("Test Created Successfully")
+        navigate("/adminDashboard")
      } catch (error) {
         console.log("Some Error occured",error)
      }
      }
-return(
-   <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg space-y-6">
-  <h2 className="text-2xl font-bold text-center">Create New Test</h2>
+  return (
+  <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] text-white">
+    <div className="w-full max-w-2xl p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/10 shadow-2xl space-y-6">
+      <h2 className="text-3xl font-extrabold text-center text-indigo-300">
+        Create New Test
+      </h2>
 
-  <div className="space-y-4">
-    <div>
-      <label className="block text-sm font-medium mb-1">Title</label>
-      <input
-        type="text"
-        name="title"
-        placeholder="Enter test title"
-        value={formData.title}
-        onChange={handleChange}
-        className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-    </div>
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-1">Title</label>
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter test title"
+            value={formData.title}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded-md bg-white/5 border border-white/20 
+                       text-white placeholder-gray-400 focus:outline-none focus:ring-2 
+                       focus:ring-indigo-400"
+          />
+        </div>
 
-    <div>
-      <label className="block text-sm font-medium mb-1">Subject</label>
-      <input
-        type="text"
-        name="subject"
-        onChange={handleChange}
-        value={formData.subject}
-        placeholder="Enter subject name"
-        className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-    </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Subject</label>
+          <input
+            type="text"
+            name="subject"
+            placeholder="Enter subject name"
+            value={formData.subject}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded-md bg-white/5 border border-white/20 
+                       text-white placeholder-gray-400 focus:outline-none focus:ring-2 
+                       focus:ring-indigo-400"
+          />
+        </div>
 
-    <div>
-      <label className="block text-sm font-medium mb-1">Topics</label>
-      <input
-        type="text"
-        name="topics"
-        onChange={handleChange}
-        value={formData.topics}
-        placeholder="Enter topics separated by commas"
-        className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <p className="text-xs text-gray-500 mt-1">Example: Algebra, Calculus, Trigonometry</p>
-    </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Topics</label>
+          <input
+            type="text"
+            name="topics"
+            placeholder="Enter topics separated by commas"
+            value={formData.topics}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded-md bg-white/5 border border-white/20 
+                       text-white placeholder-gray-400 focus:outline-none focus:ring-2 
+                       focus:ring-indigo-400"
+          />
+          <p className="text-xs text-gray-300 mt-1">
+            Example: Algebra, Calculus, Trigonometry
+          </p>
+        </div>
 
-    <div className="grid grid-cols-2 gap-4">
-      <div>
-        <label className="block text-sm font-medium mb-1">Year</label>
-        <input
-          type="number"
-          name="year"
-          onChange={handleChange}
-          value={formData.year}
-          placeholder="2025"
-          className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium mb-1">Year</label>
+            <input
+              type="number"
+              name="year"
+              placeholder="2025"
+              value={formData.year}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-md bg-white/5 border border-white/20 
+                         text-white placeholder-gray-400 focus:outline-none focus:ring-2 
+                         focus:ring-indigo-400"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-1">Duration (minutes)</label>
+            <input
+              type="number"
+              name="duration"
+              placeholder="e.g. 180"
+              value={formData.duration}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-md bg-white/5 border border-white/20 
+                         text-white placeholder-gray-400 focus:outline-none focus:ring-2 
+                         focus:ring-indigo-400"
+            />
+          </div>
+        </div>
       </div>
 
-      <div>
-        <label className="block text-sm font-medium mb-1">Duration (in minutes)</label>
-        <input
-          type="number"
-          name="duration"
-          onChange={handleChange}
-          value={formData.duration}
-          placeholder="e.g. 180"
-          className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+      <div className="pt-4">
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className="w-full py-2 rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+                     text-white font-semibold shadow-lg hover:scale-[1.02] transition-transform"
+        >
+          Create Test
+        </button>
       </div>
     </div>
   </div>
-
-  <div className="pt-4">
-    <button
-      type="submit"
-      className="w-full bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 transition"
-      onClick={handleSubmit}
-    >
-      Create Test
-    </button>
-  </div>
-</div>
-
-)
+);
 }
 export default CreateTest

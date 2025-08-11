@@ -72,7 +72,7 @@ const AdminDashboard = () => {
     navigate("/unPublish")
   }
   const handleFielding=()=>{
-    navigate("/fielding")
+    navigate("/addQuestion")
   }
   const handleRemoval=()=>{
     navigate("/removal")
@@ -82,78 +82,55 @@ const AdminDashboard = () => {
     navigate("/login")
   }
   return (
-  <div className="absolute inset-0 flex overflow-hidden">
-    <div className="w-[15%] h-full bg-blue-500">
-      <div className="text-white pt-20 pb-20 text-4xl">TEST APP</div>
-      <div className="border-t border-b border-gray-400">
-        <button className="pb-2 text-white text-xl" onClick={handleCreate}>
-          Create Test
-        </button>
+  <div className="absolute inset-0 flex overflow-hidden bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] text-white">
+    
+    {/* Left Sidebar */}
+    <div className="w-[15%] h-full bg-white/10 backdrop-blur-lg border-r border-white/20 flex flex-col items-center">
+      <div className="py-10 text-3xl font-extrabold text-indigo-300 tracking-wide">
+        TEST APP
       </div>
-      <div className="border-t border-b border-gray-400">
-        <button className="pt-2 pb-2 text-white text-xl" onClick={handleUpdate}>
-          Update Test
-        </button>
-      </div>
-      <div className="border-t border-b border-gray-400">
-        <button className="pt-2 pb-2 text-white text-xl" onClick={handlePublish}>
-          Publish Test
-        </button>
-      </div>
-      <div className="border-t border-b border-gray-400">
-        <button className="pt-2 pb-2 text-white text-xl" onClick={handleDelete}>
-          Delete Test
-        </button>
-      </div>
-      <div className="border-t border-b border-gray-400">
-        <button className="pt-2 pb-2 text-white text-xl" onClick={handleUnPublish}>
-          UnPublish Test
-        </button>
-      </div>
-      <div className="border-t border-b border-gray-400">
-        <button className="pt-2 pb-2 text-white text-xl" onClick={handleFielding}>
-          Set Fielding of Test
-        </button>
-      </div>
-      <div className="border-t border-b border-gray-400">
-        <button className="pt-2 pb-2 text-white text-xl" onClick={handleRemoval}>
-          Remove Question from Test
-        </button>
+      <div className="flex flex-col space-y-2 w-full px-2">
+        <button className="py-2 rounded-lg hover:bg-white/20 transition" onClick={handleCreate}>Create Test</button>
+        <button className="py-2 rounded-lg hover:bg-white/20 transition" onClick={handleUpdate}>Update Test</button>
+        <button className="py-2 rounded-lg hover:bg-white/20 transition" onClick={handlePublish}>Publish Test</button>
+        <button className="py-2 rounded-lg hover:bg-white/20 transition" onClick={handleDelete}>Delete Test</button>
+        <button className="py-2 rounded-lg hover:bg-white/20 transition" onClick={handleUnPublish}>UnPublish Test</button>
+        <button className="py-2 rounded-lg hover:bg-white/20 transition" onClick={handleFielding}>Add Questions</button>
+        <button className="py-2 rounded-lg hover:bg-white/20 transition" onClick={handleRemoval}>Remove Question</button>
       </div>
     </div>
-    <div className="flex-1 bg-gray-100 flex flex-col items-center p-4 relative">
+
+    {/* Main Content */}
+    <div className="flex-1 flex flex-col items-center relative p-6 overflow-hidden">
       <button
         onClick={handleLogout}
-        className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+        className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg"
       >
         Logout
       </button>
-      <h1 className="text-6xl text-blue-700 mt-10 mb-4 text-center">
+
+      <h1 className="text-5xl font-bold text-indigo-300 mt-14 mb-6 drop-shadow-lg">
         Admin Dashboard
       </h1>
-      <div
-        className="overflow-y-auto w-full max-w-[600px] flex-grow"
-        style={{ maxHeight: "65vh" }}
-      >
+
+      <div className="overflow-y-auto w-full max-w-[600px] flex-grow space-y-4 px-2" style={{ maxHeight: "65vh" }}>
         {paginatedTests.map((t) => (
-          <div
-            key={t.id}
-            className="bg-white shadow-md rounded-lg p-4 mb-4"
-          >
-            <h2 className="text-2xl font-semibold">{t.title}</h2>
-            <p className="text-gray-600">Duration: {t.duration} mins</p>
+          <div key={t.id} className="bg-white/10 backdrop-blur-lg border border-white/10 rounded-xl p-4 shadow-md hover:scale-[1.02] transition">
+            <h2 className="text-2xl font-semibold text-indigo-200">{t.title}</h2>
+            <p className="text-gray-300">Duration: {t.duration} mins</p>
           </div>
         ))}
       </div>
+
       <div className="mt-4 flex justify-center space-x-2">
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index + 1}
             onClick={() => setCurrentPage(index + 1)}
-            className={`px-3 py-1 rounded ${
+            className={`px-3 py-1 rounded-lg transition ${
               currentPage === index + 1
-                ? "bg-blue-600 text-white"
-                : "bg-gray-300 text-black"
+                ? "bg-indigo-500 text-white"
+                : "bg-white/10 text-gray-300 hover:bg-white/20"
             }`}
           >
             {index + 1}
@@ -161,24 +138,25 @@ const AdminDashboard = () => {
         ))}
       </div>
     </div>
-    <div className="w-[15%] h-full bg-blue-500">
-      <h1 className="text-white text-4xl pt-20 pb-20">All Users</h1>
-      <div className="w-full border-t border-b border-gray-400 max-h-[60vh] overflow-y-auto px-2 space-y-2">
+
+    {/* Right Sidebar */}
+    <div className="w-[15%] h-full bg-white/10 backdrop-blur-lg border-l border-white/20 flex flex-col items-center">
+      <h1 className="text-3xl font-extrabold text-indigo-300 py-10">All Users</h1>
+      <div className="w-full max-h-[60vh] overflow-y-auto px-3 space-y-3">
         {user.map((userItem) => (
           <div
             key={userItem._id}
-            className="bg-white text-black p-2 rounded shadow-md"
+            className="bg-white/10 backdrop-blur-lg border border-white/10 text-white p-3 rounded-lg shadow-md"
           >
-            <div className="font-semibold">
-              Username: {userItem.username}
-            </div>
-            <div className="text-sm">Role: {userItem.role}</div>
+            <div className="font-semibold">Username: {userItem.username}</div>
+            <div className="text-sm text-gray-300">Role: {userItem.role}</div>
           </div>
         ))}
       </div>
     </div>
+
   </div>
-)
+);
 };
 
 export default AdminDashboard;

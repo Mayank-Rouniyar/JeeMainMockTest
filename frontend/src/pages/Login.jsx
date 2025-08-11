@@ -43,57 +43,58 @@ const Login = () => {
     navigate("/adminLogin");
   };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-50">
-      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
-        <h2 className="text-3xl font-bold text-center text-blue-600">
-          Login to Your Account
-        </h2>
+  <div className="fixed inset-0 overflow-hidden bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] flex items-center justify-center">
+    <div className="w-full max-w-md p-8 rounded-2xl shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20">
+      <h2 className="text-3xl font-bold text-center text-white mb-6">
+        Login to Your Account
+      </h2>
 
-        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+      {error && <p className="text-red-400 text-sm text-center mb-4">{error}</p>}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
 
-          <input
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            type="text"
-            placeholder="Username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
+        <input
+          className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          type="text"
+          placeholder="Username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+        />
 
-          <input
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+        <input
+          className="w-full px-4 py-3 rounded-lg bg-white/10 text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
 
-          <button
-            type="submit"
-            className="w-full mb-4 bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
-          >
-            Login
-          </button>
-        </form>
-        <p
-          onClick={handleAdminLogin}
-          className="mt-4 text-center text-blue-600 hover:underline cursor-pointer"
+        <button
+          type="submit"
+          className="w-full py-3 font-semibold rounded-lg bg-indigo-500 hover:bg-indigo-600 transition-colors text-white shadow-lg"
         >
-          Go to Admin Login
-        </p>
-      </div>
+          Login
+        </button>
+      </form>
+
+      <p
+        onClick={handleAdminLogin}
+        className="mt-6 text-center text-indigo-300 hover:underline cursor-pointer transition-colors"
+      >
+        Go to Admin Login
+      </p>
     </div>
-  );
+  </div>
+);
 };
 export default Login;
