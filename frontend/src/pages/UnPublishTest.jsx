@@ -5,7 +5,6 @@ export default function UnPublishTest() {
   const [selectedTestId, setSelectedTestId] = useState("");
   const [test, setTest] = useState([]);
 
-  // Fetch tests
   const fetchAllTests = async () => {
     const token = localStorage.getItem("accessToken");
     try {
@@ -28,7 +27,6 @@ export default function UnPublishTest() {
     fetchAllTests();
   }, []);
 
-  // Handle publish
   const handleUnPublish = async () => {
     const token = localStorage.getItem("accessToken");
     try {

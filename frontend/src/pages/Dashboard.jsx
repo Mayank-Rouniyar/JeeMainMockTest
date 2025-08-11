@@ -56,12 +56,8 @@ const Dashboard = () => {
   };
   return (
   <div className="fixed top-0 left-0 w-full h-full bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] flex flex-col p-6 overflow-auto">
-    
-    {/* Header */}
     <div className="flex justify-between items-center mb-6 relative z-[9999]">
       <h1 className="text-3xl font-bold text-white drop-shadow-lg">Available Tests</h1>
-
-      {/* User Dropdown */}
       <div className="flex justify-end items-center space-x-4 p-4 bg-white/10 backdrop-blur-lg rounded-lg shadow-lg">
         <div className="relative">
           <button
@@ -89,11 +85,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
-
-    {/* Error Message */}
     {error && <p className="text-red-400">{error}</p>}
-
-    {/* Tests Grid */}
     {tests.length === 0 ? (
       <p className="text-gray-200">No tests available at the moment.</p>
     ) : (

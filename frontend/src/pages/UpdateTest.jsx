@@ -35,7 +35,7 @@ const UpdateTest = () => {
     const { name, value } = e.target;
 
     if (name === "topics") {
-      setTopicsInput(value); // free typing with commas
+      setTopicsInput(value);
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }

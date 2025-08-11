@@ -18,8 +18,6 @@ const CreateQuestion = () => {
   return (
     <div className="p-8">
       <h1 className="text-blue-600 text-4xl mb-6">Create Test</h1>
-
-      {/* Problem Statement */}
       <div className="mb-6 w-full">
         <label className="block text-lg mb-2 font-semibold">Problem Statement:</label>
         <textarea
@@ -29,8 +27,6 @@ const CreateQuestion = () => {
           className="w-full h-36 p-4 border border-gray-300 rounded text-base"
         />
       </div>
-
-      {/* Question Type Selector */}
       <div className="mb-6">
         <label className="block text-lg mb-2 font-semibold">Question Type:</label>
         <select
@@ -42,8 +38,6 @@ const CreateQuestion = () => {
           <option value="Numerical">Numerical</option>
         </select>
       </div>
-
-      {/* Conditionally Render Based on Question Type */}
       {questionType === "MCQ" ? (
         <div className="mb-6">
           <label className="block text-lg mb-4 font-semibold">Options:</label>
@@ -58,8 +52,6 @@ const CreateQuestion = () => {
               />
             </div>
           ))}
-
-          {/* Correct Option Selector */}
           <div className="mt-4">
             <label className="block text-lg mb-2 font-semibold">Correct Option:</label>
             <select

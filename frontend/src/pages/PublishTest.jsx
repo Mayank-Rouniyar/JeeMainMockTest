@@ -91,8 +91,6 @@ export default function PublishTest() {
           </button>
         </div>
       </div>
-
-      {/* Confirmation Modal */}
       {showConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm">
           <div className="bg-white rounded-2xl p-6 max-w-md w-11/12 shadow-xl text-gray-900">

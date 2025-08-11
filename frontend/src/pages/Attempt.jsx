@@ -171,7 +171,6 @@ const Attempt = () => {
   };
   return (
   <div className="fixed top-0 left-0 w-full h-full bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] text-white flex flex-col">
-    {/* Header */}
     <div className="h-[10vh] w-full flex items-center justify-between px-4 border-b border-white/20">
       <div>
         <h3 className="text-2xl font-semibold leading-none">Created and Maintained by</h3>
@@ -195,9 +194,7 @@ const Attempt = () => {
       </div>
     </div>
 
-    {/* Main Content */}
     <div className="flex h-[90vh]">
-      {/* Left Side */}
       <div className="w-[70%] p-6 flex flex-col h-full">
         <div className="overflow-y-auto flex-grow">
           <h2 className="text-lg font-bold mb-4">
@@ -231,8 +228,6 @@ const Attempt = () => {
             )}
           </div>
         </div>
-
-        {/* Buttons */}
         <div className="mt-6 pt-4 border-t border-white/20 space-x-4 pb-8">
           <button
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
@@ -254,8 +249,6 @@ const Attempt = () => {
           </button>
         </div>
       </div>
-
-      {/* Right Side */}
       <div className="w-[30%] flex flex-col border-l border-white/20 p-4">
         <div className="grid grid-cols-2 gap-2 text-sm mb-4">
           <div className="flex items-center gap-2">

@@ -11,7 +11,7 @@ const Result = () => {
   <div className="fixed inset-0 z-50 bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] flex items-center justify-center p-6 text-white">
     <div className="w-full max-w-md p-8 rounded-3xl bg-white/6 backdrop-blur-xl border border-white/10 shadow-2xl">
       <h1 className="text-3xl font-extrabold mb-2 text-green-400">
-        ✅ Test Submitted!
+         Test Submitted!
       </h1>
 
       <p className="text-sm text-gray-300">Your Score</p>

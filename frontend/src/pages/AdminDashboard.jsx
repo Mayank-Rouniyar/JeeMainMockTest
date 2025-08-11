@@ -42,7 +42,7 @@ const AdminDashboard = () => {
             },
           }
         );
-        setTest(res.data.data.reverse()); // latest first
+        setTest(res.data.data.reverse())
       } catch (error) {
         console.log("Failed to Fetch Data for test", error);
       }
@@ -84,7 +84,6 @@ const AdminDashboard = () => {
   return (
   <div className="absolute inset-0 flex overflow-hidden bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] text-white">
     
-    {/* Left Sidebar */}
     <div className="w-[15%] h-full bg-white/10 backdrop-blur-lg border-r border-white/20 flex flex-col items-center">
       <div className="py-10 text-3xl font-extrabold text-indigo-300 tracking-wide">
         TEST APP
@@ -99,8 +98,6 @@ const AdminDashboard = () => {
         <button className="py-2 rounded-lg hover:bg-white/20 transition" onClick={handleRemoval}>Remove Question</button>
       </div>
     </div>
-
-    {/* Main Content */}
     <div className="flex-1 flex flex-col items-center relative p-6 overflow-hidden">
       <button
         onClick={handleLogout}
@@ -138,8 +135,6 @@ const AdminDashboard = () => {
         ))}
       </div>
     </div>
-
-    {/* Right Sidebar */}
     <div className="w-[15%] h-full bg-white/10 backdrop-blur-lg border-l border-white/20 flex flex-col items-center">
       <h1 className="text-3xl font-extrabold text-indigo-300 py-10">All Users</h1>
       <div className="w-full max-h-[60vh] overflow-y-auto px-3 space-y-3">
@@ -159,4 +154,4 @@ const AdminDashboard = () => {
 );
 };
 
-export default AdminDashboard;
+export default AdminDashboard
