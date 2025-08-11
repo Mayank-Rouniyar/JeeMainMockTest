@@ -41,7 +41,7 @@ const AdminLogin = () => {
       }, 0);
     } catch (error) {
       console.log("Error occured", error);
-      setError(error.response?.data.message || "Registration Failed");
+      setError(error.response?.data.message || "Login Failed check your credentials");
     }
   };
   return (
